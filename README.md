@@ -8,7 +8,7 @@ The purpose of this project is to provide a partial replacement for SAS Informat
 
 Existing Information Delivery Portal
 
-![Existing SAS Information Delivery Portal](screenshots/existing-idp.png)
+![Existing SAS Information Delivery Portal](screenshots/existing-idp.jpeg)
 
 New SAS Portal App
 
