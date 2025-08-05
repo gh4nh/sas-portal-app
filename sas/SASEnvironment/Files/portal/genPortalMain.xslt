@@ -969,9 +969,6 @@
             </xsl:call-template>
 
         </xsl:when>
-        <!--xsl:when test="@portletType = 'PersonalRepositoryNavigator'"-->
-        <xsl:when test="contains(',PersonalRepositoryNavigator,ResultsNavigator,', concat(',', @portletType, ','))">
-        </xsl:when>
         <xsl:otherwise>
 
            <!-- Non-placeholder portlets -->
@@ -1102,12 +1099,6 @@
                           <xsl:with-param name="spaObjectsParam">InformationMap</xsl:with-param>
                         </xsl:call-template>         
               </xsl:when>
-              <!--xsl:when test="@portletType='PersonalRepositoryNavigator'">
-                        < xsl:call-template name="SASNavigator"/>
-              </xsl:when>     
-              <xsl:when test="@portletType='ResultsNavigator'">
-                        <xsl:call-template name="SASNavigator"/>
-              </xsl:when-->
               <xsl:when test="@portletType='StoredProcessNavigator'">
                         <xsl:call-template name="SASNavigator">
                           <xsl:with-param name="spaObjectsParam">StoredProcess</xsl:with-param>
