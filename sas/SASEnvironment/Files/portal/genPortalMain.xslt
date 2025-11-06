@@ -691,7 +691,10 @@
     <xsl:message>showLocation=<xsl:value-of select="$showLocation"/></xsl:message>
     <xsl:variable name="SBIPURL" select="@DefaultValue"/>
     <xsl:variable name="linkFullName" select="tokenize($SBIPURL, '/')[last()]"/>
-    <xsl:variable name="linkName" select="tokenize($linkFullName,'\(')[1]"/>
+    <xsl:variable name="lastParen" select="max(for $i in 1 to string-length($linkFullName)
+                                                return if (substring($linkFullName, $i, 1) = '(') then $i else ())" />
+    <xsl:variable name="linkName" select="substring($linkFullName,1, $lastParen - 1)" />
+    <xsl:variable name="linkFullPath" select="substring($SBIPURL, 1 , string-length($SBIPURL) - string-length($linkFullName ) -1 )" />
     
     <xsl:choose>
         <xsl:when test="contains($SBIPURL, '(Report)') = 'true'">
@@ -721,7 +724,7 @@
         <table><tr><td><span style="" colspan="13" class="treeDescription">- <xsl:value-of select="@Desc"/></span></td></tr></table>
     </xsl:if>
     <xsl:if test="'$showLocation' != '' and $showLocation = 'true'">
-        <table><tr><td><span style="white-space: nowrap;" colspan="13" class="treeDescription">- <xsl:value-of select="$SBIPURL"/></span></td></tr></table>
+        <table><tr><td><span style="white-space: nowrap;" colspan="13" class="treeDescription">- <xsl:value-of select="$linkFullPath"/></span></td></tr></table>
     </xsl:if>
 
 </xsl:template>
